@@ -2,9 +2,21 @@ var wrapLog = function (callback, name)
 
 {
 
-  return function(x,y,z)
+  return function()
   {
-    console.log(name +"("+ x +", " +y +") ==> ", callback(x,y,z));
+    var arg = arguments;
+
+    var output = name + " (";
+
+    for(x=0; x<arguments.length; x++)
+
+    {
+        output = output + x + ", ";
+    }
+
+      output = output + ") ==>";
+
+      console.log( output, callback.apply(null, arg));
 
   };
 
